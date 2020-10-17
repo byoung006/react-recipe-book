@@ -3,14 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const person = {name:'bryce'}
+  const person2 = {name:'12312312312'}
+  const family = [person, person2];
+
+
+  function Imafunction() {
+
+    return family.map(index => {
+      return <div>{index.name}</div>
+    })
+
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-
-          OMG HI BRYCE
-          Edit <code>src/App.js</code> and save to reload.
+         <Imafunction/>
         </p>
 
       </header>
