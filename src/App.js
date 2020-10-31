@@ -1,30 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { recipes } from "./recipes";
+import {AccessTime, Forward } from "@material-ui/icons";
 
-function App() {
-
-  const person = {name:'bryce'}
-  const person2 = {name:'12312312312'}
-  const family = [person, person2];
-
-
-  function Imafunction() {
-
-    return family.map(index => {
-      return <div>{index.name}</div>
-    })
-
-  }
-
+import {
+  Button,
+  Grid,
+  Card,
+  Typography,
+  CardContent,
+} from "@material-ui/core";
+function App(Buttons) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         <Imafunction/>
-        </p>
+    <div>
+      <header>
+        <Grid
+          spacing={10}
+          alignContent={"center"}
+          justify={"center"}
+          container
+          direction={"column"}
+          alignItems={"center"}
+        >
+          {recipes.map((recipe) => {
+            return (
+              <Grid item>
+                <Typography variant="contained" colour="primary">
+                  {recipe.category}
+                </Typography>
 
+                {recipe.list.map((listItem) => {
+                  return (
+                    <Button>
+                      <Card>
+                        <CardContent>{listItem.dishName}</CardContent>
+                        <CardContent>{listItem.prepTime}</CardContent>
+
+                        <CardContent>
+                          {listItem.onTheGo && <Forward></Forward>}
+                          {listItem.takesMoreThan45 && (
+                            <AccessTime/>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </Button>
+                  );
+                })}
+              </Grid>
+            );
+          })}
+        </Grid>
       </header>
     </div>
   );
