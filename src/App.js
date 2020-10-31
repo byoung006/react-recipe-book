@@ -1,80 +1,60 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Box, Button, List } from "@material-ui/core";
+import { recipes } from "./recipes";
+import { AccessAlarm, AccessTime, Forward } from "@material-ui/icons";
+
 import {
-  createMuiTheme,
-  withStyles,
-  makeStyles,
-} from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import Tooltip from "@material-ui/core/Tooltip";
-
-
-
+  Button,
+  Grid,
+  GridList,
+  ListItem,
+  ListItemText,
+  Tab,
+  Card,
+  Typography,
+  CardContent,
+} from "@material-ui/core";
 
 function App(Buttons) {
-const [breakfast,setBreakfast]=useState("eggs'n'things");
-const [lunch,setLunch]=useState("Soup sandwiches and poor decisions");
-const [dinner,setDinner]=useState("wine me and dine me");
-const toggleVisible = () => {
-  setVisible(!visible)
-};
-
-const [visible, setVisible]=useState(false)
   return (
     <div>
       <header>
-        <List>
-          <Button
-            variant="contained"
-            color="primary"
-            href="https://osonegrocoffee.com/"
-          >
-            Snacks
-          </Button>
-        </List>
-        <List>
-          <Button
-            variant="contained"
-            color="primary"
-            onMouseOver={()=>setBreakfast('eggies')}
-            onMouseLeave={()=>setBreakfast("eggs'n'things")}
-            
-          >
-            {breakfast}
-          </Button>{" "}
-        </List>
-        <List>
-          <Button
-            variant="contained"
-            colour="secondary"
-            onClick={toggleVisible}
-            
-            title="soup, sandwiches, and poor company"
+        <Grid
+          spacing={10}
+          alignContent={"center"}
+          justify={"center"}
+          container
+          direction={"column"}
+          alignItems={"center"}
+        >
+          {recipes.map((recipe) => {
+            return (
+              <Grid item>
+                <Typography variant="contained" colour="primary">
+                  {recipe.category}
+                </Typography>
 
-            
-          >
-            Toggle Dinner
-          </Button>
-        </List>
+                {recipe.list.map((listItem) => {
+                  return (
+                    <Button>
+                      <Card>
+                        <CardContent>{listItem.dishName}</CardContent>
+                        <CardContent>{listItem.prepTime}</CardContent>
 
-
-
-
-        {visible&&<List>
-          <Button
-            variant="contained"
-            colour="secondary"
-            href="https://www.sagetapasandwinebar.com/"
-
-
-
-
-          >
-            Dinner
-          </Button>
-        </List>}
-        
+                        <CardContent>
+                          {listItem.onTheGo && <Forward></Forward>}
+                          {listItem.takesMoreThan45 && (
+                            <AccessTime></AccessTime>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </Button>
+                  );
+                })}
+              </Grid>
+            );
+          })}
+        </Grid>
       </header>
     </div>
   );
