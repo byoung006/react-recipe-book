@@ -1,16 +1,28 @@
 import React from "react";
 import "./App.css";
 import { recipes } from "./recipes";
-import {AccessTime, Forward } from "@material-ui/icons";
+import { AccessTime, Forward, AccountTree } from "@material-ui/icons";
 
-import {
-  Button,
-  Grid,
-  Card,
-  Typography,
-  CardContent,
-} from "@material-ui/core";
+import { Button, Grid, Card, Typography, CardContent } from "@material-ui/core";
+
+const DisplayIconFromTimeC = ({ time, overideIcon=null }) => {
+
+  if(overideIcon)
+    return overideIcon;
+
+
+  if (time >= 45) {
+    return <AccessTime />;
+  }
+  if (time >= 20) {
+    return <Forward />;
+  }
+  return "";
+};
+
 function App(Buttons) {
+  const elephant = "wow";
+
   return (
     <div>
       <header>
@@ -34,13 +46,19 @@ function App(Buttons) {
                     <Button>
                       <Card>
                         <CardContent>{listItem.dishName}</CardContent>
-                        <CardContent>{listItem.prepTime}</CardContent>
+                        <CardContent>
+                          {listItem.prepTime + " MINUTES"}
+                        </CardContent>
 
                         <CardContent>
-                          {listItem.onTheGo && <Forward></Forward>}
-                          {listItem.takesMoreThan45 && (
-                            <AccessTime/>
-                          )}
+                          <DisplayIconFromTimeC
+                            time={listItem.prepTime}
+                            // overideIcon={<AccountTree/>}
+                            a={"a"}
+                            c={"asdasd"}
+                            b={"asdasd"}
+                            d={"asdas"}
+                          />
                         </CardContent>
                       </Card>
                     </Button>
