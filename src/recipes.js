@@ -1,4 +1,5 @@
-const energy_balls = {
+
+export const energy_balls = {
   id: "energy_balls",
   dishName: "Energy Balls",
   recipe: {
@@ -13,7 +14,7 @@ const energy_balls = {
   },
 };
 
-const plum_dumplings = {
+export const plum_dumplings = {
   id: "plum_dumplings",
   dishName: "Plum Dumplings",
   recipe: {
@@ -26,7 +27,7 @@ const plum_dumplings = {
     ],
   },
 };
-
+export const Recipes = {plum_dumplings,energy_balls,}
 export const Categories = [
   {
     category: "Snacks",
