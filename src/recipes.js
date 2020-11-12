@@ -1,7 +1,7 @@
 export const energy_balls = {
   id: "energy_balls",
   dishName: "Energy Balls",
-  category: ["Snack", "Breakfast"],
+  category: ["Snack", "breakfast"],
   recipe: {
     prepTime: 10,
     cookTime: 30,
@@ -40,7 +40,7 @@ export const plum_dumplings = {
 export const overnight_oats = {
   id: "overnight_oats",
   dishName: "Overnight Oats",
-  category: ["Breakfast"],
+  category: ["breakfast"],
   recipe: {
     prepTime: 10,
     cookTime: 60,
@@ -55,20 +55,20 @@ export const overnight_oats = {
 export const curried_pasta_salad = {
   id: "curried_pasta_salad",
   dishName: "Curried Pasta Salad",
-  category: ["Lunch", "Dinner"],
+  category: ["lunch", "dinner"],
   recipe: {
     prepTime: 45,
     cookTime: 20,
     ingredients: [
       "1 Cup uncooked Pasta, 1/4 Cup Mayo, Red pepper Diced, 1 Hard-boiled Egg",
     ],
-    instructions: ["1. Cook Pasta al-dente , 2. cool and set aside "],
+    instructions: ["Cook Pasta al-dente", "cool and set aside"],
   },
 };
 export const mac_and_cheese = {
   id: "mac_and_cheese",
   dishName: "Mac & Cheese",
-  category: ["Lunch", "Dinner"],
+  category: ["lunch", "dinner"],
 
   recipe: {
     prepTime: 45,
@@ -76,13 +76,13 @@ export const mac_and_cheese = {
     ingredients: [
       "1 Cup uncooked Pasta, 1/4 Cup Mayo, Red pepper Diced, 1 Hard-boiled Egg",
     ],
-    instructions: ["1. Cook Pasta al-dente , 2. cool and set aside "],
+    instructions: ["Cook Pasta al-dente", "cool and set aside"],
   },
 };
 export const cloud_omelette = {
   id: "cloud_omelettes",
   dishName: "Cloud Omelettes",
-  category: ["Breakfast"],
+  category: ["breakfast"],
 
   recipe: {
     prepTime: 20,
@@ -91,15 +91,16 @@ export const cloud_omelette = {
       "2 Eggs, 1 stalk Green Onions, 1/4 Red Pepper, Boursaine Cheese",
     ],
     instructions: [
-      "1. In a non-stick pan,cook all fillings on high heat to desired doneness, 2. Whisk eggs together using fork, " +
-        "3. Add eggs to pan, and incorporate into fillings using a spatula",
+      "In a non-stick pan,cook all fillings on high heat to desired doneness",
+      "Whisk eggs together using fork",
+      "Add eggs to pan, and incorporate into fillings using a spatula",
     ],
   },
 };
 export const eggwhite_waffle = {
   id: "eggwhite_waffles",
   dishName: "Egg-white Waffles",
-  category: ["Breakfast"],
+  category: ["breakfast"],
 
   recipe: {
     prepTime: 20,
@@ -119,7 +120,7 @@ export const eggwhite_waffle = {
 export const afghan_cookies = {
   id: "afghan_cookies",
   dishName: "Afghan Cookies",
-  category: ["Snacks"],
+  category: ["snacks"],
 
   recipe: {
     prepTime: 15,
@@ -140,7 +141,7 @@ export const afghan_cookies = {
 export const perogies = {
   id: "perogies",
   dishName: "Perogies",
-  category: ["Lunch", "Dinner"],
+  category: ["lunch", "dinner"],
 
   recipe: {
     prepTime: 60,
@@ -171,7 +172,7 @@ export const perogies = {
 export const asian_pork_belly = {
   id: "asian_pork_belly",
   dishName: "Asian Pork Belly",
-  category: ["Lunch", "Dinner"],
+  category: ["lunch", "dinner"],
 
   recipe: {
     prepTime: 60,
@@ -213,24 +214,24 @@ export const Recipes = {
 };
 export const Categories = [
   {
-    category: "Snacks",
+    category: "snacks",
     recipes: [energy_balls, plum_dumplings, afghan_cookies],
   },
   {
-    category: "Breakfast",
+    category: "breakfast",
     recipes: [energy_balls, overnight_oats, cloud_omelette, eggwhite_waffle],
   },
   {
-    category: "Lunch",
+    category: "lunch",
     recipes: [curried_pasta_salad],
   },
   {
-    category: "Dinner",
+    category: "dinner",
     recipes: [curried_pasta_salad, mac_and_cheese, perogies],
   },
 
   //
-  //   category: "Breakfast",
+  //   category: "breakfast",
   //   list: [
   //     {
   //       dishName: "Energy Balls",
@@ -267,7 +268,7 @@ export const Categories = [
   //       prepTime: 30,
   //     },
   //     {
-  //       category: "Lunch",
+  //       category: "lunch",
   //       list: [
   //         {
   //           dishName: "Energy Balls",
@@ -305,7 +306,7 @@ export const Categories = [
   // },
 
   // {
-  //   category: "Dinner",
+  //   category: "dinner",
   //   list: [
   //
   //     {

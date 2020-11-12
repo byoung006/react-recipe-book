@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import RecipeReviewCard from "./RecipeCards";
 
 const DisplayIconFromTimeC = ({ time, overrideIcon = null }) => {
   if (overrideIcon) return overrideIcon;
@@ -45,47 +46,21 @@ function App() {
   const classes = cardStyles();
   const Home = () => {
     let { id } = useParams();
-    return (
-      <>
-        {id}
-        {id && (
-          <>
-            <Card className={classes.root}>
-              <Link to={Recipes[id].id} replace={true}>
-                <CardContent>
-                  <List>{Recipes[id].dishName}</List>
-                  <List>
-                    {Recipes[id].recipe.ingredients.map((ingredient) => {
-                      return <ListItem>{ingredient}</ListItem>;
-                    })}{" "}
-                  </List>
-                  <Typography variant={"body1"}>
-                    {Recipes[id].recipe.instructions.map((instruction) => {
-                      return <ListItem>{instruction}</ListItem>;
-                    })}{" "}
-                  </Typography>
-                </CardContent>
-                <CardContent>
-                  {Recipes[id].recipe.prepTime + " MINUTES"}
-                  <DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />
-                </CardContent>
-              </Link>
-            </Card>
-          </>
-        )}
-        {!id && (
-          <Grid
-            spacing={4}
-            container
-            alignContent={"space-around"}
-            alignItems={"space-around"}
-            justify={"space-around"}
-          >
-            {Object.values(Recipes).map((recipe) => {
-              return (
-                <Grid item>
-                  <Typography variant="h2">{recipe?.category[0]}</Typography>
 
+    function GetCatergoryRecipes({ category }) {
+      return (
+        <>
+          {" "}
+          <Grid item>
+            <Typography variant="h2" style={{ textTransform: "capitalize" }}>
+              {category}
+            </Typography>
+            {Object.values(Recipes)
+              .filter((recipe) => {
+                return recipe.category.includes(category);
+              })
+              .map((recipe) => {
+                return (
                   <Link to={recipe.id}>
                     <Card>
                       <CardContent>{recipe.dishName}</CardContent>
@@ -101,9 +76,61 @@ function App() {
                       </CardContent>
                     </Card>
                   </Link>
-                </Grid>
-              );
-            })}
+                );
+              })}{" "}
+          </Grid>
+        </>
+      );
+    }
+
+    return (
+      <>
+        {id}
+        {id && (
+          <>
+            <Card className={classes.root}>
+              <Link to={Recipes[id].id} replace={true}>
+                <CardContent>
+                  <List>{Recipes[id].dishName}</List>
+                  <List>
+                    {Recipes[id].recipe.ingredients.map((ingredient) => {
+                      return <ListItem>{ingredient}</ListItem>;
+                    })}{" "}
+                  </List>
+                  {/*<Typography variant={"body1"}>*/}
+                  {/*  {Recipes[id].recipe.instructions.map((instruction) => {*/}
+                  {/*    return <ListItem>{instruction}</ListItem>;*/}
+                  {/*  })}{" "}*/}
+                  {/*</Typography>*/}
+                </CardContent>
+                <CardContent>
+                  {/*{Recipes[id].recipe.prepTime + " MINUTES"}*/}
+                  {/*<DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />*/}
+                </CardContent>
+              </Link>
+            </Card>
+
+            <RecipeReviewCard
+              title={Recipes[id].dishName}
+              subheader={Recipes[id].recipe.prepTime + " MINUTES"}
+              icon={<DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />}
+              ingredientsArray={Recipes[id].recipe.ingredients}
+              instrunctionArray={Recipes[id].recipe.instructions}
+            />
+          </>
+        )}
+        {!id && (
+          <Grid
+            spacing={4}
+            container
+            alignContent={"space-around"}
+            alignItems={"space-around"}
+            justify={"space-around"}
+          >
+            <GetCatergoryRecipes category={"dinner"} />
+            <GetCatergoryRecipes category={"lunch"} />
+            <GetCatergoryRecipes category={"breakfast"} />
+            <GetCatergoryRecipes category={"snacks"} />
           </Grid>
         )}
       </>
