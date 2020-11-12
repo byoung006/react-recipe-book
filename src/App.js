@@ -1,22 +1,20 @@
 import React from "react";
 import "./App.css";
-import {Categories, Recipes} from "./recipes";
-import { AccessTime, Forward, AccountTree } from "@material-ui/icons";
-
-import { Button, Grid, Card, Typography, CardContent } from "@material-ui/core";
+import { Categories, Recipes } from "./recipes";
+import { AccessTime, Forward, Whatshot } from "@material-ui/icons";
+import { Grid, Card, Typography, CardContent, List } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link, useParams
+  Link,
+  useParams,
 } from "react-router-dom";
-import {recipes} from "./Categories";
+import ListItem from "@material-ui/core/ListItem";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const DisplayIconFromTimeC = ({ time, overideIcon=null }) => {
-
-  if(overideIcon)
-    return overideIcon;
-
+const DisplayIconFromTimeC = ({ time, overrideIcon = null }) => {
+  if (overrideIcon) return overrideIcon;
 
   if (time >= 45) {
     return <AccessTime />;
@@ -26,115 +24,131 @@ const DisplayIconFromTimeC = ({ time, overideIcon=null }) => {
   }
   return "";
 };
+const DisplayIconFromTimeA = ({ cookTime, overrideIcon = null }) => {
+  if (overrideIcon) return overrideIcon;
 
-function App(Buttons) {
+  if (cookTime >= 0) {
+    return <Whatshot />;
+  }
 
+  return "";
+};
+const cardStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    minHeight: 275,
+    color: "red",
+  },
+});
 
-  const Home=()=>
-  {
+function App() {
+  const classes = cardStyles();
+  const Home = () => {
     let { id } = useParams();
     return (
       <>
+        {id}
         {id && (
           <>
-            <Link to={Recipes[id].id}>
-              <Card>
-                <CardContent>{Recipes[id].dishName}</CardContent>
+            <Card className={classes.root}>
+              <Link to={Recipes[id].id} replace={true}>
+                <CardContent>
+                  <List>{Recipes[id].dishName}</List>
+                  <List>
+                    {Recipes[id].recipe.ingredients.map((ingredient) => {
+                      return <ListItem>{ingredient}</ListItem>;
+                    })}{" "}
+                  </List>
+                  <Typography variant={"body1"}>
+                    {Recipes[id].recipe.instructions.map((instruction) => {
+                      return <ListItem>{instruction}</ListItem>;
+                    })}{" "}
+                  </Typography>
+                </CardContent>
                 <CardContent>
                   {Recipes[id].recipe.prepTime + " MINUTES"}
+                  <DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />
                 </CardContent>
-
-                <CardContent>
-                  <DisplayIconFromTimeC
-                    time={Recipes[id].recipe.prepTime}
-                    // overideIcon={<AccountTree/>}
-                    a={"a"}
-                    c={"asdasd"}
-                    b={"asdasd"}
-                    d={"asdas"}
-                  />
-                </CardContent>
-              </Card>
-            </Link>
+              </Link>
+            </Card>
           </>
         )}
-        {!id &&
-          Categories.map((recipe) => {
-            return (
-              <Grid item>
-                <Typography variant="contained" colour="primary">
-                  {recipe.category}
-                </Typography>
+        {!id && (
+          <Grid
+            spacing={4}
+            container
+            alignContent={"space-around"}
+            alignItems={"space-around"}
+            justify={"space-around"}
+          >
+            {Object.values(Recipes).map((recipe) => {
+              return (
+                <Grid item>
+                  <Typography variant="h2">{recipe?.category[0]}</Typography>
 
-                {recipe.recipes.map((listItem) => {
-                  return (
-                    <Link to={listItem.id}>
-                      <Card>
-                        <CardContent>{listItem.dishName}</CardContent>
-                        <CardContent>
-                          {listItem.recipe.prepTime + " MINUTES"}
-                        </CardContent>
-
-                        <CardContent>
-                          <DisplayIconFromTimeC
-                            time={listItem.recipe.prepTime}
-                            // overideIcon={<AccountTree/>}
-                            a={"a"}
-                            c={"asdasd"}
-                            b={"asdasd"}
-                            d={"asdas"}
-                          />
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })}
-              </Grid>
-            );
-          })}
+                  <Link to={recipe.id}>
+                    <Card>
+                      <CardContent>{recipe.dishName}</CardContent>
+                      <CardContent>
+                        {recipe.recipe.prepTime + " MINUTES to Prep"}
+                        <DisplayIconFromTimeC time={recipe.recipe.prepTime} />
+                      </CardContent>
+                      <CardContent>
+                        {recipe.recipe.cookTime + " MINUTES to Cook"}
+                        <DisplayIconFromTimeA
+                          cookTime={recipe.recipe.cookTime}
+                        />
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
       </>
     );
-  }
+  };
 
   return (
     <Router>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-      </ul>
+      <Link to="/">Home</Link>
 
-
-      <header>
-        <Grid
-            spacing={10}
-            alignContent={"center"}
-            justify={"center"}
-            container
-            direction={"column"}
-            alignItems={"center"}
-        >
-          <Switch>
-            <Route exact path="/">
+      <Switch>
+        <Route
+          path="/:id"
+          children={
+            <Grid
+              spacing={5}
+              alignContent={"center"}
+              justify={"center"}
+              container
+              direction={"column"}
+              alignItems={"center"}
+            >
+              {" "}
               <Home />
-            </Route>
-            <Route path="/:id" children={<Home/>}>
-              {/*<About />*/}
-            </Route>
-            <Route path="/dashboard">
-              {/*<Dashboard />*/}
-            </Route>
-          </Switch>
-        </Grid>
-      </header>
+            </Grid>
+          }
+        />{" "}
+        <Route
+          path="/"
+          children={
+            <Grid
+              spacing={5}
+              alignContent={"center"}
+              justify={"center"}
+              container
+              direction={"column"}
+              alignItems={"center"}
+            >
+              {" "}
+              <Home />
+            </Grid>
+          }
+        />{" "}
+      </Switch>
     </Router>
   );
 }
-
 export default App;
