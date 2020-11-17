@@ -19,10 +19,11 @@ import { Recipes } from "./recipes";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Grid } from "@material-ui/core";
+import { colors, Grid } from "@material-ui/core";
+import Accordion from "@material-ui/core/Accordion";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: { maxWidth: 400, maxHeight: null },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
@@ -46,7 +47,7 @@ export default function RecipeReviewCard({
   title,
   subheader,
   icon,
-  instrunctionArray,
+  instructionArray,
   ingredientsArray,
   image = null,
 }) {
@@ -59,68 +60,145 @@ export default function RecipeReviewCard({
 
   return (
     <>
-      <Grid container spacing={4}>
-        <Grid item sm={12}>
-          <Card className={classes.root}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                  {icon}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={title}
-              subheader={subheader}
-            />
+      <Grid
+        container
+        spacing={8}
+        style={{
+          alignContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <Card style={{ alignContent: "center", alignItems: "center" }}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                {icon}
+              </Avatar>
+            }
+            title={title}
+            subheader={subheader}
+          />
 
-            {image && (
-              <CardMedia
-                className={classes.media}
-                image="/static/images/cards/paella.jpg"
-                title="Paella dish"
-              />
-            )}
-          </Card>
-        </Grid>
+          {image && <CardMedia className={classes.media} />}
 
-        <Grid item sm={4}>
-          <Typography variant="h2" style={{ textTransform: "capitalize" }}>
-            ingredients
-          </Typography>
-          <Card>
-            <List dense={true} disablePadding={true}>
-              {ingredientsArray.map((ingredient) => {
-                return (
-                  <ListItem>
-                    <ListItemText primary={ingredient} />
-                  </ListItem>
-                );
-              })}{" "}
-            </List>
-          </Card>
-        </Grid>
-        <Grid item sm={8}>
-          <Typography variant="h2" style={{ textTransform: "capitalize" }}>
-            instructions
-          </Typography>
-          <Card>
-            <List dense={true} disablePadding={true}>
-              {instrunctionArray.map((instruction) => {
-                return (
-                  <ListItem>
-                    <ListItemText primary={instruction} />
-                  </ListItem>
-                );
-              })}{" "}
-            </List>
-          </Card>
-        </Grid>
+          <Grid
+            container
+            item
+            sm={12}
+            justify={"center"}
+            // style={{
+            //   alignContent: "center",
+            //   alignItems: "center",
+            //   textJustify: "auto",
+            //   textAlign: "center",
+            // }}
+          >
+            {/*<Card>*/}
+            <Grid
+              sm={12}
+              item
+              // style={{
+              //   alignItems: "center",
+              //   alignContent: "center",
+              // }}
+            >
+              <Typography
+                variant="h2"
+                style={{
+                  textTransform: "capitalize",
+                  textAlign: "center",
+                  alignContent: "center",
+                }}
+              >
+                {" "}
+                ingredients:
+              </Typography>
+              <List
+                dense={true}
+                disablePadding={true}
+                style={{
+                  // alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {ingredientsArray.map((ingredient) => {
+                  return (
+                    <ListItem
+                      style={{
+                        textAlign: "center",
+                        alignItems: "center",
+                        display: "flex",
+                        // alignContent: "center",
+                      }}
+                    >
+                      <ListItemText
+                        inset={true}
+                        primary={ingredient}
+                        style={{
+                          textAlign: "center",
+                          alignContent: "center",
+                          alignItems: "center",
+                        }}
+                      />
+                    </ListItem>
+                  );
+                })}{" "}
+              </List>
+            </Grid>
+            <Grid
+              sm={12}
+              item
+              spacing={12}
+              style={{
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              {/*</Card>*/}
+              <Typography
+                variant="h2"
+                style={{
+                  textTransform: "capitalize",
+                  alignContent: "space-between",
+                }}
+              >
+                instructions:
+              </Typography>
+              {/*<Card>*/}
+              <List
+                dense={true}
+                disablePadding={false}
+                style={{
+                  alignItems: "center",
+                }}
+              >
+                {instructionArray.map((instruction) => {
+                  return (
+                    <ListItem
+                      style={{
+                        textAlign: "center",
+                        alignItems: "center",
+                        display: "flex",
+                      }}
+                    >
+                      <ListItemText
+                        primary={instruction}
+                        style={{
+                          textAlign: "center",
+                          alignItems: "center",
+                          // borderStyle: "solid",
+                        }}
+                      />
+                    </ListItem>
+                  );
+                })}{" "}
+              </List>
+            </Grid>
+            {/*</Card>*/}
+          </Grid>
+        </Card>
       </Grid>
-
       {/*<CardActions disableSpacing>*/}
       {/*  <IconButton aria-label="add to favorites">*/}
       {/*    <FavoriteIcon />*/}

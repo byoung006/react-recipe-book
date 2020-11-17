@@ -2,7 +2,14 @@ import React from "react";
 import "./App.css";
 import { Categories, Recipes } from "./recipes";
 import { AccessTime, Forward, Whatshot } from "@material-ui/icons";
-import { Grid, Card, Typography, CardContent, List } from "@material-ui/core";
+import {
+  Grid,
+  Card,
+  Typography,
+  CardContent,
+  List,
+  CardMedia,
+} from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,12 +45,10 @@ const cardStyles = makeStyles({
   root: {
     minWidth: 275,
     minHeight: 275,
-    color: "red",
   },
 });
 
 function App() {
-  const classes = cardStyles();
   const Home = () => {
     let { id } = useParams();
 
@@ -52,7 +57,13 @@ function App() {
         <>
           {" "}
           <Grid item>
-            <Typography variant="h2" style={{ textTransform: "capitalize" }}>
+            <Typography
+              variant="h2"
+              style={{
+                textTransform: "capitalize",
+                alignContent: "space-around",
+              }}
+            >
               {category}
             </Typography>
             {Object.values(Recipes)
@@ -74,6 +85,7 @@ function App() {
                           cookTime={recipe.recipe.cookTime}
                         />
                       </CardContent>
+                      <CardContent>{recipe.picture}></CardContent>
                     </Card>
                   </Link>
                 );
@@ -85,37 +97,38 @@ function App() {
 
     return (
       <>
-        {id}
+        {/*{id}*/}
         {id && (
           <>
-            <Card className={classes.root}>
-              <Link to={Recipes[id].id} replace={true}>
-                <CardContent>
-                  <List>{Recipes[id].dishName}</List>
-                  <List>
-                    {Recipes[id].recipe.ingredients.map((ingredient) => {
-                      return <ListItem>{ingredient}</ListItem>;
-                    })}{" "}
-                  </List>
-                  {/*<Typography variant={"body1"}>*/}
-                  {/*  {Recipes[id].recipe.instructions.map((instruction) => {*/}
-                  {/*    return <ListItem>{instruction}</ListItem>;*/}
-                  {/*  })}{" "}*/}
-                  {/*</Typography>*/}
-                </CardContent>
-                <CardContent>
-                  {/*{Recipes[id].recipe.prepTime + " MINUTES"}*/}
-                  {/*<DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />*/}
-                </CardContent>
-              </Link>
-            </Card>
+            {/*<Card className={classes.root}>*/}
+            {/*  <Link to={Recipes[id].id} replace={true}>*/}
+            {/*    <CardContent>*/}
+            {/*      <List>{Recipes[id].dishName}</List>*/}
+            {/*      /!*<List>{Recipes[id].dishName}</List>*!/*/}
+            {/*      <List>*/}
+            {/*        {Recipes[id].recipe.ingredients.map((ingredient) => {*/}
+            {/*          return <ListItem>{ingredient}</ListItem>;*/}
+            {/*        })}{" "}*/}
+            {/*      </List>*/}
+            {/*      /!*<Typography variant={"body1"}>*!/*/}
+            {/*      /!*  {Recipes[id].recipe.instructions.map((instruction) => {*!/*/}
+            {/*      /!*    return <ListItem>{instruction}</ListItem>;*!/*/}
+            {/*      /!*  })}{" "}*!/*/}
+            {/*      /!*</Typography>*!/*/}
+            {/*    </CardContent>*/}
+            {/*    <CardContent>*/}
+            {/*      /!*{Recipes[id].recipe.prepTime + " MINUTES"}*!/*/}
+            {/*      /!*<DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />*!/*/}
+            {/*    </CardContent>*/}
+            {/*  </Link>*/}
+            {/*</Card>*/}
 
             <RecipeReviewCard
               title={Recipes[id].dishName}
               subheader={Recipes[id].recipe.prepTime + " MINUTES"}
               icon={<DisplayIconFromTimeC time={Recipes[id].recipe.prepTime} />}
               ingredientsArray={Recipes[id].recipe.ingredients}
-              instrunctionArray={Recipes[id].recipe.instructions}
+              instructionArray={Recipes[id].recipe.instructions}
             />
           </>
         )}
@@ -139,8 +152,6 @@ function App() {
 
   return (
     <Router>
-      <Link to="/">Home</Link>
-
       <Switch>
         <Route
           path="/:id"
@@ -154,6 +165,7 @@ function App() {
               alignItems={"center"}
             >
               {" "}
+              <Link to="/">Home</Link>
               <Home />
             </Grid>
           }
@@ -170,6 +182,7 @@ function App() {
               alignItems={"center"}
             >
               {" "}
+              <Link to="/">Home</Link>
               <Home />
             </Grid>
           }
