@@ -60,154 +60,61 @@ export default function RecipeReviewCard({
 
   return (
     <>
-      <Grid
-        container
-        spacing={8}
-        style={{
-          alignContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
-        <Card style={{ alignContent: "center", alignItems: "center" }}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                {icon}
-              </Avatar>
-            }
-            title={title}
-            subheader={subheader}
-          />
-
-          {image && <CardMedia className={classes.media} />}
-
-          <Grid
-            container
-            item
-            sm={12}
-            justify={"center"}
-            // style={{
-            //   alignContent: "center",
-            //   alignItems: "center",
-            //   textJustify: "auto",
-            //   textAlign: "center",
-            // }}
-          >
-            {/*<Card>*/}
-            <Grid
-              sm={12}
-              item
-              // style={{
-              //   alignItems: "center",
-              //   alignContent: "center",
-              // }}
-            >
-              <Typography
-                variant="h2"
-                style={{
-                  textTransform: "capitalize",
-                  textAlign: "center",
-                  alignContent: "center",
-                }}
-              >
-                {" "}
-                ingredients:
-              </Typography>
-              <List
-                dense={true}
-                disablePadding={true}
-                style={{
-                  // alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {ingredientsArray.map((ingredient) => {
-                  return (
-                    <ListItem
-                      style={{
-                        textAlign: "center",
-                        alignItems: "center",
-                        display: "flex",
-                        // alignContent: "center",
-                      }}
-                    >
-                      <ListItemText
-                        inset={true}
-                        primary={ingredient}
-                        style={{
-                          textAlign: "center",
-                          alignContent: "center",
-                          alignItems: "center",
-                        }}
-                      />
-                    </ListItem>
-                  );
-                })}{" "}
-              </List>
-            </Grid>
-            <Grid
-              sm={12}
-              item
-              spacing={12}
-              style={{
-                alignItems: "center",
-                alignContent: "center",
-              }}
-            >
-              {/*</Card>*/}
-              <Typography
-                variant="h2"
-                style={{
-                  textTransform: "capitalize",
-                  alignContent: "space-between",
-                }}
-              >
-                instructions:
-              </Typography>
-              {/*<Card>*/}
-              <List
-                dense={true}
-                disablePadding={false}
-                style={{
-                  alignItems: "center",
-                }}
-              >
-                {instructionArray.map((instruction) => {
-                  return (
-                    <ListItem
-                      style={{
-                        textAlign: "center",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <ListItemText
-                        primary={instruction}
-                        style={{
-                          textAlign: "center",
-                          alignItems: "center",
-                          // borderStyle: "solid",
-                        }}
-                      />
-                    </ListItem>
-                  );
-                })}{" "}
-              </List>
-            </Grid>
-            {/*</Card>*/}
+      {" "}
+      <Card>
+        <Grid
+          container
+          spacing={8}
+          alignItems={"flex-start"}
+          alignContent={"flex-start"}
+          justify={"flex-start"}
+        >
+          {/* the title is wrapped in a grid item with sm 12 to enforce it's the only thing on it's row*/}
+          <Grid sm={12} item>
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              Bryce
+            </Avatar>
+            <h1>{title}</h1>
+            <h3> {subheader}</h3>
+            {image && <CardMedia className={classes.media} />}
           </Grid>
-        </Card>
-      </Grid>
+
+          <Grid sm={12} md={6} lg={4} item>
+            <Typography variant="h2">ingredients:</Typography>
+            <List dense={true} disablePadding={true}>
+              {ingredientsArray.map((ingredient) => {
+                return (
+                  <ListItem>
+                    <ListItemText inset={true} primary={ingredient} />
+                  </ListItem>
+                );
+              })}{" "}
+            </List>
+          </Grid>
+          <Grid sm={12} md={6} lg={4} item>
+            {/*</Card>*/}
+            <Typography variant="h2">instructions:</Typography>
+            {/*<Card>*/}
+            <List dense={true} disablePadding={false}>
+              {instructionArray.map((instruction) => {
+                return (
+                  <ListItem>
+                    <ListItemText primary={instruction} />
+                  </ListItem>
+                );
+              })}{" "}
+            </List>
+          </Grid>
+          {/*</Card>*/}
+        </Grid>
+      </Card>
       {/*<CardActions disableSpacing>*/}
       {/*  <IconButton aria-label="add to favorites">*/}
       {/*    <FavoriteIcon />*/}
       {/*  </IconButton>*/}
-
       {/*  <IconButton aria-label="share">*/}
       {/*    <ShareIcon />*/}
       {/*  </IconButton>*/}
-
       {/*  <IconButton*/}
       {/*    className={clsx(classes.expand, {*/}
       {/*      [classes.expandOpen]: expanded,*/}
