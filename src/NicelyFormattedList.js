@@ -7,12 +7,14 @@ import React from "react";
 export const NicelyFormattedList = ({ title, mappableData }) => {
   return (
     <>
-      <Typography variant="h2">{title}</Typography>
-      <List dense={true} disablePadding={true}>
+      <List dense={true} disablePadding={true} style={{ padding: 16 }}>
+        <ListItem>
+          <Typography variant="h2">{title}</Typography>
+        </ListItem>
         {mappableData.map((value) => {
           return (
             <ListItem>
-              <ListItemText inset={true} primary={value} />
+              <ListItemText primary={value} />
             </ListItem>
           );
         })}{" "}

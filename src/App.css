@@ -1,18 +1,11 @@
-
-* {
-  margin: 2%;
-  padding: 2%;
-  box-sizing: border-box;
-}
-
 :root {
-
   background-color: cornflowerblue;
   font-variant: common-ligatures;
-  color: blanchedalmond;}
+  text-emphasis-colorolor: blanchedalmond;
+  color: black;
 
-
-
-
-
-
+}
+card {
+  background-color: lightsteelblue;
+  outline: antiquewhite;
+}

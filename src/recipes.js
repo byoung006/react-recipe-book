@@ -20,6 +20,10 @@ export const energy_balls = {
       "It should resemble a somewhat sticky dough that holds together when lightly squeezed. Place the bowl in the refrigerator for 30 minutes to set (this will make the balls easier to roll later on).",
       "Remove the bowl from the refrigerator and portion the dough into balls of desired size. (I use a cookie scoop to make mine approximately 1 inch in diameter). Enjoy!",
     ],
+    tipsAndTricks: [
+      "When making energy balls, remember that you can use lots of different ingredients as your 'Mix ins'!",
+      "Try using things like hemp hearts or Dried fruits to create some variety. ",
+    ],
   },
 };
 
@@ -50,6 +54,9 @@ export const plum_dumplings = {
       "Drop into boiling salted water and cook for 20 minutes",
       "Drain and serve topped with buttered bread crumbs",
     ],
+    tipsAndTricks: [
+      "Try using cinnamon sugar as the topping instead of Bread Crumbs! ",
+    ],
   },
 };
 export const overnight_oats = {
@@ -65,6 +72,7 @@ export const overnight_oats = {
     instructions: [
       "1. Add all ingredients to container, 2. Mix thoroughly, 3. Refrigerate minimum 1 hour",
     ],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const curried_pasta_salad = {
@@ -81,6 +89,7 @@ export const curried_pasta_salad = {
       " 1 Hard-boiled Egg",
     ],
     instructions: ["Cook Pasta al-dente", "cool and set aside"],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const mac_and_cheese = {
@@ -95,6 +104,7 @@ export const mac_and_cheese = {
       "1 Cup uncooked Pasta, 1/4 Cup Mayo, Red pepper Diced, 1 Hard-boiled Egg",
     ],
     instructions: ["Cook Pasta al-dente", "cool and set aside"],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const cloud_omelette = {
@@ -113,6 +123,7 @@ export const cloud_omelette = {
       "Whisk eggs together using fork",
       "Add eggs to pan, and incorporate into fillings using a spatula",
     ],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const eggwhite_waffle = {
@@ -133,6 +144,7 @@ export const eggwhite_waffle = {
         "In a seperate bowl seperate 2 egg whites, and whisk until soft peaks form. Fold egg whites into mixture" +
         "Ladle the batter into a preheated waffle iron. Cook the waffles until golden and crisp. Serve immediately.",
     ],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const afghan_cookies = {
@@ -159,6 +171,7 @@ export const afghan_cookies = {
       "Place heaped teaspoonfuls onto a baking tray, squeeze mixture together gently if necessary then press lightly with a fork.",
       "Bake for 15-20 minutes. Cool on a wire rack before icing.",
     ],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const perogies = {
@@ -191,6 +204,7 @@ export const perogies = {
       "To Make Sauerkraut Filling: Place bacon in a large, deep skillet. Cook over medium high heat until evenly brown. Drain, crumble and place in a medium bowl. Stir in sauerkraut, then sour cream. Mix well.",
       "Roll reserved dough out on a floured surface. Cut circles out of dough, using a small round container. Place a spoonful of potato or sauerkraut filling in the center of each circle and fold over, pinching edges together to seal. Bring a large pot of lightly salted water to a boil; drop perogies in boiling water and cook for 4 to 5 minutes, or until they float.",
     ],
+    tipsAndTricks: ["SSDsd"],
   },
 };
 export const asian_pork_belly = {
@@ -226,6 +240,7 @@ export const asian_pork_belly = {
       "In the last couple of hours of roasting, begin to brush on layers of the glaze. I do this 4-6 times about every 20 minutes, to build flavourful, sticky glaze on the pork belly.",
       "Let the pork belly rest for about 15 minutes before slicing and serving.",
     ],
+    tipsAndTricks: ["skdhfkuh"],
   },
 };
 

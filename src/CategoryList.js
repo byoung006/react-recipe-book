@@ -9,9 +9,10 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
   },
+  cardMargin: { margin: 20, padding: 20 },
 }));
 function CategoryTitle(props) {
   return (
@@ -42,7 +43,7 @@ export function CategoryList({ category }) {
         <CategoryTitle category={category} />
         {applyCategoryFilter().map((recipe) => {
           return (
-            <Card>
+            <Card className={myClasses.cardMargin}>
               <Button to={recipe.id} component={Link} fullWidth>
                 <Avatar
                   aria-label="recipe"

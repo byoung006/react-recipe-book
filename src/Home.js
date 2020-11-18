@@ -16,32 +16,27 @@ export const Home = () => {
     <>
       {id && (
         <>
-          <RecipeReviewCard
-            id={id}
-            title={Recipes[id].dishName}
-            subheader={Recipes[id].recipe.prepTime + " MINUTES"}
-            icon={
-              <TimeLengthIconIndicator time={Recipes[id].recipe.prepTime} />
-            }
-            ingredientsArray={Recipes[id].recipe.ingredients}
-            instructionArray={Recipes[id].recipe.instructions}
-          />
+          <Grid item lg={12}>
+            <RecipeReviewCard
+              id={id}
+              title={Recipes[id].dishName}
+              subheader={Recipes[id].recipe.prepTime + " MINUTES"}
+              icon={
+                <TimeLengthIconIndicator time={Recipes[id].recipe.prepTime} />
+              }
+              ingredientsArray={Recipes[id].recipe.ingredients}
+              instructionArray={Recipes[id].recipe.instructions}
+              tipsAndTricksArray={Recipes[id].recipe.tipsAndTricks}
+            />
+          </Grid>
         </>
       )}
       {!id && (
         <>
-          <Grid
-            spacing={2}
-            container
-            alignContent={"space-around"}
-            alignItems={"space-around"}
-            justify={"space-around"}
-          >
-            <CategoryList category={"dinner"} />
-            <CategoryList category={"lunch"} />
-            <CategoryList category={"breakfast"} />
-            <CategoryList category={"snacks"} />
-          </Grid>
+          <CategoryList category={"dinner"} />
+          <CategoryList category={"lunch"} />
+          <CategoryList category={"breakfast"} />
+          <CategoryList category={"snacks"} />
         </>
       )}
     </>
