@@ -98,7 +98,7 @@ export const mac_and_cheese = {
   },
 };
 export const cloud_omelette = {
-  id: "cloud_omelettes",
+  id: "cloud_omelette",
   dishName: "Cloud Omelettes",
   category: ["breakfast"],
 
@@ -116,7 +116,7 @@ export const cloud_omelette = {
   },
 };
 export const eggwhite_waffle = {
-  id: "eggwhite_waffles",
+  id: "eggwhite_waffle",
   dishName: "Egg-white Waffles",
   category: ["breakfast"],
 
