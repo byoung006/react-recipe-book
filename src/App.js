@@ -11,8 +11,9 @@ import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
+import Dropdown from "./Dropdown";
+import DinnerMenu from "./DinnerMenu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,9 +45,13 @@ function BasicLayoutRoute({ Component, path }) {
                       <HomeIcon style={{ fontSize: 50 }} />
                     </IconButton>
                   </IconButton>
+
                   <Typography variant="h6" className={classes.title}>
                     Snacking
                   </Typography>
+                  <IconButton edge="end" color="inherit" aria-label="menu">
+                    <Dropdown />
+                  </IconButton>
                 </Toolbar>
               </AppBar>
             </Grid>
@@ -64,6 +69,9 @@ function App() {
       <Switch>
         <BasicLayoutRoute path={"/:id"} Component={<Home />} />
         <BasicLayoutRoute path={"/"} Component={<Home />} />
+      </Switch>
+      <Switch>
+        <BasicLayoutRoute path={"/dinner"} Component={<DinnerMenu />} />
       </Switch>
     </Router>
   );
